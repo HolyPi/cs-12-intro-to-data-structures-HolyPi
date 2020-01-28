@@ -13,12 +13,21 @@ def arrange():
       index = random.randint(0, len(words)-1)
       arranged.append(words[index])
       words.pop(index)
-      
+
+
+def stringmaker():
+   string = ''
+   for i in range(0, len(arranged)):
+      string += arranged[i]
+      string += ' '
+   return string
+
+
 
 
 
 arrange()
-print(arranged)
+print(stringmaker())
 
 
 
