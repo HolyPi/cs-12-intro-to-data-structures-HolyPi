@@ -1,18 +1,29 @@
+import sys as sys
+from random import randint
+import random
 
-def rearrange(input):
-    print("Enter a string:")
-    string = input()
-    a = string.split(" ")
 
-    a=a[-1::-1] 
+words = sys.argv[1:]
 
-    arranged = ' '.join(a)
+arranged = []
 
-    print(a)
+
+def arrange():
+   for i in range(0, len(words)):
+      index = random.randint(0, len(words)-1)
+      arranged.append(words[index])
+      words.pop(index)
+      
+
+
+
+arrange()
+print(arranged)
+
+
+
 
   
-
-rearrange(input)
 
 
    
