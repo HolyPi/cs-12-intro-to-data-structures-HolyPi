@@ -18,9 +18,16 @@ def histogram():
         else:  
             text_histogram[word] += 1
 
+def unique_words():
+    return len(text_histogram)
+
+
+
+
 
 histogram()
 print(text_histogram)
+print(unique_words())
 
 
 
