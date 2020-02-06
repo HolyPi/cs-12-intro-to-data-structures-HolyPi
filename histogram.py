@@ -24,7 +24,10 @@ def histogram(filename):
 # def unique_words(histogram):
 #     return len(text_histogram)
 
+
+
 def sample(histogram):
+    #frequency of words
     tokens = sum([count for word, count in histogram.items()])
     dart = randint(1, tokens)
     fence = 0
