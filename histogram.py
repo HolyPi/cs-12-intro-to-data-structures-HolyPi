@@ -25,6 +25,9 @@ def histogram(filename):
 #     return len(text_histogram)
 
 
+def get_frequency(word, histogram):
+    return histogram[word]
+
 
 def sample(histogram):
     #frequency of words
