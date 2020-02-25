@@ -5,21 +5,7 @@ class Listogram:
     def __init__(self, word_list):
         '''Initializes the listogram properties'''
 
-        self.word_list = word_list
-       
-        self.list_histogram = self.build_listogram()
-
-        self.tokens = self.get_num_tokens()
-        self.types = self.unique_words()
-
-    def build_listogram(self): 
-        '''Creates a histogram list of lists using the word_list property and returns it'''
-
-        filename = "text.txt"
-        lines = open(filename, "r")
-        words = lines.read()
         self.text_histogram = []
-        word_list = words.split()
 
         self.word_list = word_list
        
@@ -29,6 +15,20 @@ class Listogram:
         self.types = self.unique_words()
 
 
+    def build_listogram(self): 
+        '''Creates a histogram list of lists using the word_list property and returns it'''
+
+        # for word in self.word_list:
+        #     word = word.strip(',)-(?.\"\'!').lower()
+        #     if word not in self.text_histogram:
+        #         self.text_histogram[word] = 1 
+        #     else:  
+        #         self.text_histogram[word] += 1
+
+        # return self.text_histogram
+
+        
+
     def get_num_tokens(self):
         '''gets the number of tokens in the listogram'''
 
@@ -37,14 +37,23 @@ class Listogram:
             tokens += item[1]
         return tokens
 
-    def get_index(self, word, list_histogram):
+    def get_index(self, word, text_histogram):
         '''searches in the list histogram parameter and returns the index of the inner list that contains the word if present'''
         #TODO: use your get_index function as a starting point to complete this method
-    
+        for index, item in enumerate(text_histogram):
+            if word == item[0]:
+                return index
+        
+
+
+
 
     def frequency(self, word):
         '''returns the frequency or count of the given word in the list of lists histogram'''
-        return self.text_histogram[word]
+        if word in self.text_histogram.keys():
+            return self.text_histogram[word]
+
+        return 0
     def unique_words(self):
         '''returns the number of unique words in the list of lists histogram'''
         return len(self.text_histogram)
@@ -62,7 +71,7 @@ class Listogram:
         fence = 0
         for word, count in self.text_histogram.items():
             fence += count
-        if fence >= dart:
+            if fence >= dart:
                 return word
 
 
