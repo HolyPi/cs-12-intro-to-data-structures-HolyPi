@@ -5,27 +5,35 @@ class Listogram:
     def __init__(self, word_list):
         '''Initializes the listogram properties'''
 
-        self.text_histogram = []
 
         self.word_list = word_list
        
-        self.dictionary_histogram = self.build_listogram()
+        self.list_histogram = self.build_listogram()
 
-        self.tokens = sum(self.dictionary_histogram.values())
+        self.tokens = self.get_num_tokens()
         self.types = self.unique_words()
 
 
     def build_listogram(self): 
         '''Creates a histogram list of lists using the word_list property and returns it'''
+        list_histogram = []
+    
+        for word in self.word_list:
+            word = word.strip(',)-(?.\"\'!').lower()
+            inner_list_index = self.get_index(word, self.list_histogram)
+        
+            '''if word not in listogram:
+                listogram[word] = 1 
+            else:  
+                listogram[word] += 1'''
+            if inner_list_index != None:
+                inner_list = self.list_histogram[inner_list_index]
+                inner_list[1] += 1
+                #[word, count]
+            else:
+                self.list_histogram.append([word, 1])
 
-        # for word in self.word_list:
-        #     word = word.strip(',)-(?.\"\'!').lower()
-        #     if word not in self.text_histogram:
-        #         self.text_histogram[word] = 1 
-        #     else:  
-        #         self.text_histogram[word] += 1
-
-        # return self.text_histogram
+        return list_histogram
 
         
 
